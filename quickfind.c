@@ -20,27 +20,19 @@ int Particione (int A[], int p, int r) {
 void QuickFind (int A[], int p, int r, int k) {
   if (p <= r) {
      int q = Particione (A, p, r);
-     printf("\nQ: %d\n",q);
      if (q == k) {
         printf("Elemento: %d\n", A[q]);
         return; 
      }
-     else if (q < k) {
-	 printf("q<k\n");
-	 printf("q+1 = %d, r = %d, k = %d\n", q+1, r, k);
-         QuickFind (A, q+1, r, k); 
-     }
-     else {
-	 printf("q>k\n");
-	 printf("\np = %d, q-1 = %d, k = %d\n", p, q-1, k);
-         QuickFind (A, p, q-1, k);
-     }
+     else if (q < k)
+            QuickFind (A, q+1, r, k); 
+     	  else
+            QuickFind (A, p, q-1, k);
   }
 }
 
 
-int main ()
-{
+int main (){
     int i, p = 0, r = 7;
 
     int A[] = {7, 1, 3, 10, 17, 2, 21, 9};
